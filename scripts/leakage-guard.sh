@@ -29,6 +29,7 @@ denylist+='|my\.1password'
 denylist+='|\bREDACTED\b|REDACTED|REDACTED'
 denylist+='|REDACTED|REDACTED|REDACTED'
 denylist+='|REDACTED|REDACTED|REDACTED|REDACTED'   # product-domain fingerprints
+denylist+='|REDACTED'   # personal email — attribution uses the website URL, not an address
 denylist+='|\[\[[A-Za-z]'   # [[wikilink]] — NOT a Bash [[ test (which has a space after [[)
 
 # Files to scan: tracked Markdown/JSON/shell, excluding this script and the private profile.
@@ -39,7 +40,7 @@ mapfile -t files < <(
 )
 
 # Allowlist: lines that legitimately contain a denylisted-looking token (author attribution).
-allow='Brian Greenberg|REDACTEDbriangreenberg\.net'
+allow='Brian Greenberg|briangreenberg\.net'
 
 hits=0
 for f in "${files[@]}"; do
